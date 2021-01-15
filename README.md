@@ -9,6 +9,8 @@
 | nickname | string | null: false |
 | first_name | string | null: false |
 | last_name | string | null: false |
+| first_name_ruby | string | null: false |
+| last_name_ruby | string | null: false |
 | birthday     | date | null: false |
 
 ### Association
@@ -22,11 +24,11 @@
 | ------ | ------ | ----------- |
 | title   | string | null: false |
 | explanation   | text | null: false |
-| category     | string | null: false |
+| category_id     | integer | null: false |
 | state_id    | integer | null: false |
 | delivery_fee_id   | integer | null: false |
-| shipment_id   | integer | null: false |
-| days_id   | integer | null: false |
+| prefectures_id   | integer | null: false |
+| day_id   | integer | null: false |
 | price    | integer | null: false |
 | user | references | null: false | foreign_key: true | 
 
@@ -57,7 +59,7 @@
 | municipalities     | string | null: false |
 | address    | string | null: false |
 | phone_number   | string | null: false |
-| building   | string | null: false |
+| building   | string |
 | purchase | references | null: false |foreign_key: true |
 
 ### Association
