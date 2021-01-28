@@ -88,27 +88,27 @@ RSpec.describe User, type: :model do
       it 'first_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
         @user.first_name = 'ぁ-んァ-ヶ一-龥々'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name is invalid")
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
       it 'last_nameは全角（漢字・ひらがな・カタカナ）でなければ登録できない' do
         @user.last_name = 'ぁ-んァ-ヶ一-龥々'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name is invalid")
+        expect(@user.errors.full_messages).to include('Last name is invalid')
       end
       it 'first_name_rubyは全角（カタカナ）でなければ登録できない' do
         @user.first_name_ruby = 'あいうえお'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name ruby is invalid")
+        expect(@user.errors.full_messages).to include('First name ruby is invalid')
       end
       it 'last_name_rubyは全角（カタカナ）でなければ登録できない' do
         @user.last_name_ruby = 'あいうえお'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name ruby is invalid")
+        expect(@user.errors.full_messages).to include('Last name ruby is invalid')
       end
       it 'emailは@が含まれていないと登録ができない' do
         @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
     end
   end
