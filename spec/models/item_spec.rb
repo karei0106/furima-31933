@@ -57,6 +57,41 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include
       end
+      it 'category_idのidが0では登録できない' do
+        @item.category_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
+      end
+      it 'state_idのidが0では登録できない' do
+        @item.state_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("State must be other than 0")
+      end
+      it 'delivery_fee_idのidが0では登録できない' do
+        @item.delivery_fee_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee must be other than 0")
+      end
+      it 'prefecture_idのidが0では登録できない' do
+        @item.prefecture_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 0")
+      end
+      it 'day_idのidが0では登録できない' do
+        @item.day_id = '0'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Day must be other than 0")
+      end
+      it '299円以下では登録できない' do
+        @item.price = '300'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than 300")
+      end
+      it '10000000円以上では登録できない' do
+        @item.price = '10000000'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be less than 10000000")
+      end
     end
   end
 end
