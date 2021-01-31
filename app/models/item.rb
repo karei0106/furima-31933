@@ -8,11 +8,10 @@ class Item < ApplicationRecord
     validates :explanation
     VALID_PASSWORD_REGEX = /\A[0-9]+\z/i.freeze
     validates :price, format: { with: VALID_PASSWORD_REGEX },
-    numericality: { only_integer: true,
+                      numericality: { only_integer: true,
 
-      greater_than: 300, less_than: 10000000
-      
-      }
+                                      greater_than: 300, less_than: 10_000_000 }
+
     validates :image
   end
   with_options numericality: { other_than: 0 } do
