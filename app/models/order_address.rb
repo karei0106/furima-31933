@@ -13,8 +13,8 @@ class OrderAddress
   VALID_PASSWORD_REGEX = /\A[0-9]+\z/i.freeze
 
   def save
-    Order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     ShippingAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalities: municipalities,
-                           address: address, building: building, order_id: order_id)
+                           address: address, building: building, order_id: order.id)
   end
 end
