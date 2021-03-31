@@ -7,7 +7,10 @@ RSpec.describe Order, type: :model do
 
   describe '購入機能' do
     context '購入できるとき' do
-      it 'postal_codeとmunicipalities,address,phone_number,prefecture_idが存在すれば登録できる' do
+      it 'postal_codeとmunicipalities,address,phone_number,prefecture_id,buildingが存在すれば登録できる' do
+        expect(@order).to be_valid
+      end
+      it 'buildingが抜けていても登録できる' do
         expect(@order).to be_valid
       end
     end
@@ -37,10 +40,15 @@ RSpec.describe Order, type: :model do
         @order.valid?
         expect(@order.errors.full_messages).to include('Prefecture is not a number')
       end
-      it 'prefecture_idが空では登録できない' do
-        @order.prefecture_id = ''
+      it 'user_idが空では登録できない' do
+        @order.user_id = ''
         @order.valid?
-        expect(@order.errors.full_messages).to include('Prefecture is not a number')
+        expect(@order.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが空では登録できない' do
+        @order.item_id = ''
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Item can't be blank")
       end
       it 'prefecture_idのidが0では登録できない' do
         @order.prefecture_id = 0
