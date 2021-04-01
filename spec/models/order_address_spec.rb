@@ -11,6 +11,7 @@ RSpec.describe Order, type: :model do
         expect(@order).to be_valid
       end
       it 'buildingが抜けていても登録できる' do
+        @order.building = ''
         expect(@order).to be_valid
       end
     end
