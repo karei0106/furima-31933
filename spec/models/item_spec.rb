@@ -55,7 +55,7 @@ RSpec.describe Item, type: :model do
       it 'priceは全角では登録できない' do
         @item.price = '１２３４５６７８９０'
         @item.valid?
-        expect(@item.errors.full_messages).to include
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'category_idのidが0では登録できない' do
         @item.category_id = 0
