@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :price, format: { with: VALID_PASSWORD_REGEX },
                       numericality: { only_integer: true,
 
-                                      greater_than: 300, less_than: 10_000_000 }
+                                      greater_than: 299, less_than: 10_000_000 }
 
     validates :image
   end
